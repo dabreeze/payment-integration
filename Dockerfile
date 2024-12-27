@@ -1,5 +1,5 @@
 # Stage 1: Builder (for building the project using Maven)
-FROM maven:3.3.2-openjdk-21-slim as builder
+FROM maven:3.8.6-openjdk-21-slim as builder
 
 WORKDIR /app
 
