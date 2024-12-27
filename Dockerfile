@@ -43,7 +43,7 @@
 #ENTRYPOINT ["java", "-jar", "/application/spring-boot-loader/spring-boot-loader.jar"]
 
 # Stage 1: Build the JAR.
-FROM maven:latest AS build
+FROM maven:latest AS builder
 
 # Set the working directory for the build stage.
 WORKDIR /app
