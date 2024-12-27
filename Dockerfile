@@ -1,5 +1,5 @@
 # Stage 1: Builder (for building the project using Maven)
-FROM maven:3.8.6-openjdk-21-slim as builder
+FROM eclipse-temurin:21-jre-alpine as builder
 
 # Set the working directory
 WORKDIR /app
