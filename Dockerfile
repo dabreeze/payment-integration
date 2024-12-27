@@ -65,7 +65,9 @@ WORKDIR /app
 #COPY .env /app/.env
 
 # Copy the JAR file from the build stage into the final image
-COPY --from=build /app/target/usermanagementmodule-0.0.1-SNAPSHOT.jar /app/um.jar
+COPY --from=builder /app/target/paystack_integration-0.0.1-SNAPSHOT.jar app.jar
+
+#COPY --from=build /app/target/usermanagementmodule-0.0.1-SNAPSHOT.jar /app/um.jar
 
 # Expose the port the application runs on
 #EXPOSE 9091
