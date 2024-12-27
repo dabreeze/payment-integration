@@ -1,4 +1,3 @@
-
 # Stage 1: Builder (for extracting layers from the Spring Boot JAR)
 FROM eclipse-temurin:21-jre-alpine as builder
 
@@ -26,8 +25,5 @@ COPY --from=builder /extracted/snapshot-dependencies/ /application/snapshot-depe
 # Optional: Debugging step to check if files were copied correctly
 RUN ls -alh /application
 
-# Set the entrypoint for the application to run as a Spring Boot application
-ENTRYPOINT ["java", "-cp", "application:spring-boot-loader/spring-boot-loader.jar", "org.springframework.boot.loader.JarLauncher"]
-
-
-
+# Set the entrypoint to use the spring-boot-loader.jar
+ENTRYPOINT ["java", "-jar", "/application/spring-boot-loader/spring-boot-loader.jar"]
