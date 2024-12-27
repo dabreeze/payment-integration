@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Spring Boot application
+  springboot-app:
+    build: .
+    container_name: springboot-app
+    ports:
+      - "8085:8080"  # Expose Spring Boot app on port 8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/paystack?serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQL8Dialect
+    depends_on:
+      - mysql-db
+    networks:
+      - app-network
+
+  # MySQL database
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: paystack
+    ports:
+      - "3306:3306"  # Expose MySQL on port 3306
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
