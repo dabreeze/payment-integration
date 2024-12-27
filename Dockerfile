@@ -37,7 +37,7 @@ COPY --from=extractor /extracted/snapshot-dependencies/ /application/snapshot-de
 
 # Optional: Debugging step to check if files were copied correctly
 RUN ls -alh /application
-RUN ls -alh //application/spring-boot-loader/
+RUN ls -alh //application/spring-boot-loader/org/
 
 # Set the entrypoint to use the spring-boot-loader.jar
 ENTRYPOINT ["java", "-jar", "/application/spring-boot-loader/spring-boot-loader.jar"]
