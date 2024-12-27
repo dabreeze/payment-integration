@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HttpHelper {
 
-    @Value("${paystack.secret.key}")
+    @Value("${PAYSTACK.SECRET.KEY}")
     private String paystackSecretKey;
 
     @PostConstruct

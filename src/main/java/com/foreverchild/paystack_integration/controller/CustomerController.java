@@ -2,6 +2,7 @@ package com.foreverchild.paystack_integration.controller;
 
 import com.foreverchild.paystack_integration.model.Customer;
 import com.foreverchild.paystack_integration.service.customer.CustomerServiceImpl;
+import com.foreverchild.paystack_integration.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,8 @@ import java.util.List;
 public class CustomerController {
 
     private CustomerServiceImpl customerService;
+    @Autowired
+    private Utils utils;
 
     @Autowired
     public void setEmployeeDao(CustomerServiceImpl customerService) {
@@ -19,20 +22,19 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public List<Customer> getAllEmployees(){
+    public List<Customer> getAllCustomers(){
         return customerService.findAll();
     }
 
     @GetMapping("/{customerId}")
-    public Customer getEmployee(@PathVariable Long customerId){
+    public Customer getCustomer(@PathVariable Long customerId){
         Customer employee = customerService.findById(customerId);
         return employee;
     }
 
     @PostMapping("/customer")
-    public Customer saveEmployee(@RequestBody Customer employeeBody){
-        employeeBody.setId(null);
-        Customer employee = customerService.save(employeeBody);
+    public Customer saveCustomer(@RequestBody Customer customer){
+        Customer employee = customerService.save(customer);
         return employee;
     }
 
@@ -42,7 +44,7 @@ public class CustomerController {
         return employee;
     }
 
-    @DeleteMapping("/customer/{customerId}")
+    @DeleteMapping("/{customerId}")
     public String deleteEmployee(@PathVariable Long customerId){
         String response = customerService.deleteEmployee(customerId);
         return response;

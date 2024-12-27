@@ -20,6 +20,19 @@ public class InitializePaymentResponse {
     @JsonProperty("data")
     private Data data;
 
+    @JsonProperty("meta")
+    private PaymentVerificationResponse.Meta meta;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    protected static class Meta {
+        private String nextStep;
+    }
+
     @Getter
     @Setter
     @AllArgsConstructor

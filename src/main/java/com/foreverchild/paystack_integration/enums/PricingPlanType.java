@@ -1,5 +1,6 @@
 package com.foreverchild.paystack_integration.enums;
 
+import jakarta.persistence.Enumerated;
 import lombok.Getter;
 
 @Getter

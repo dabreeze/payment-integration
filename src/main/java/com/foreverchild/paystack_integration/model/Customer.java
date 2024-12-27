@@ -19,6 +19,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+//    @Column(name = "customer_id")
+//    private String customerId;
+
     @Column(name = "username", nullable = false)
     private String username;
 

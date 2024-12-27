@@ -25,6 +25,18 @@ public class PaymentVerificationResponse {
 
     @JsonProperty("data")
     private Data data;
+    @JsonProperty("meta")
+    private Meta meta;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    protected static class Meta {
+        private String nextStep;
+    }
 
     @Getter
     @Setter

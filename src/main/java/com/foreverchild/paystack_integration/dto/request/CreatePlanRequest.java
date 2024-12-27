@@ -7,26 +7,24 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class CreatePlanRequest {
-    @NotNull(message = "Plan name cannot be null")
-    @JsonProperty("name")
-    private String name;
+public record CreatePlanRequest(
+        @NotNull(message = "Plan name cannot be null")
+        @JsonProperty("name")
+        String name,
 
-    @NotNull(message = "Interval cannot be null")
-    @JsonProperty("interval")
-    private String interval;
+        @NotNull(message = "Interval cannot be null")
+        @JsonProperty("interval")
+        String interval,
 
-//    @NotNull(message = "Amount cannot be null")
-    @JsonProperty("amount")
-    @Min(value = 100, message = "amount should be more than 100 NGN")
-    @Pattern(regexp = "^[0-9]+$", message = "Can only be numbers")
-    private String amount;
+        @NotNull(message = "Amount cannot be null")
+        @JsonProperty("amount")
+        @Min(value = 100, message = "amount should be more than 100 NGN")
+        @Pattern(regexp = "^[0-9]+$", message = "Can only be numbers")
+        String amount,
 
-    @JsonProperty("currency")
-    private String currency;
+        @JsonProperty("currency")
+        String currency
+) {
+
 }

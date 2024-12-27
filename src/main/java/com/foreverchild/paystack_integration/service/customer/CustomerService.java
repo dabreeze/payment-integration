@@ -1,5 +1,6 @@
 package com.foreverchild.paystack_integration.service.customer;
 
+import com.foreverchild.paystack_integration.dto.request.SaveCustomer;
 import com.foreverchild.paystack_integration.model.Customer;
 
 import java.util.List;

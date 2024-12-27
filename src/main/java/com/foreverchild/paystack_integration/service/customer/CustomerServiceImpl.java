@@ -2,6 +2,7 @@ package com.foreverchild.paystack_integration.service.customer;
 
 import com.foreverchild.paystack_integration.model.Customer;
 import com.foreverchild.paystack_integration.repository.CustomerRepository;
+import com.foreverchild.paystack_integration.utils.Utils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImpl implements CustomerService{
     private CustomerRepository customerRepository;
+    private Utils utils;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, Utils utils) {
         this.customerRepository = customerRepository;
+        this.utils = utils;
     }
 
     @Override
@@ -22,6 +25,7 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Customer save(Customer customer) {
+//        Customer customer =  utils.jsonToObject(saveCustomer,Customer.class);
         return customerRepository.save(customer);
     }
 
