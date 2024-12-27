@@ -1,26 +1,33 @@
+
+# Stage 1: Builder (for extracting layers from the Spring Boot JAR)
 FROM eclipse-temurin:21-jre-alpine as builder
-WORKDIR extracted
+
+# Set the working directory where the extracted layers will be stored
+WORKDIR /extracted
+
+# Add the JAR file from the local target directory into the container
 ADD ./target/paystack_integration-0.0.1-SNAPSHOT.jar app.jar
+
+# Extract layers using Spring Boot Layertools
 RUN java -Djarmode=layertools -jar app.jar extract
+
+# Stage 2: Final image (for running the application)
 FROM eclipse-temurin:21-jre-alpine
-WORKDIR application
-COPY --from=builder extracted/dependencies/ ./
-RUN true
-COPY --from=builder extracted/spring-boot-loader/ ./
-RUN true
-COPY --from=builder extracted/snapshot-dependencies/ ./
-RUN true
-COPY --from=builder extracted/application/ ./
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
-#ENTRYPOINT ["java", "org.springframework.boot.loader.jarLauncher"]
+# Set the working directory for the final application
+WORKDIR /application
 
-#FROM ubuntu:latest AS build
-#RUN apt-get update
-#RUN apt-get install openjdk-23-jdk -y
-#COPY . .
-#RUN java -jar target/myapp.jar
-#FROM openjdk:23-jdk-slim
-#EXPOSE 8080
-#COPY --from-build /build/libs/paystack_integration-0.0.1-SNAPSHOT.jar app.jar
-#ENTRYPOINT ["java", "-jar", "app.jar"]
+# Copy the extracted layers from the builder stage
+COPY --from=builder /extracted/application/ /application/
+COPY --from=builder /extracted/dependencies/ /application/dependencies/
+COPY --from=builder /extracted/spring-boot-loader/ /application/spring-boot-loader/
+COPY --from=builder /extracted/snapshot-dependencies/ /application/snapshot-dependencies/
+
+# Optional: Debugging step to check if files were copied correctly
+RUN ls -alh /application
+
+# Set the entrypoint for the application to run as a Spring Boot application
+ENTRYPOINT ["java", "-cp", "application:spring-boot-loader/spring-boot-loader.jar", "org.springframework.boot.loader.JarLauncher"]
+
+
+
