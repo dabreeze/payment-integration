@@ -13,7 +13,7 @@
         <file>logs/user-management-module-api.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- Date pattern to include date in the filename -->
-            <fileNamePattern>logs/user-management-module-api-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/paystack-integration-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory> <!-- Optional: Keep logs for the last 30 days -->
         </rollingPolicy>
         <encoder>
