@@ -8,8 +8,8 @@
 #EXPOSE 8080
 #ENTRYPOINT ["java", "-jar", "app.jar"]
 
-#FROM maven:3-eclipse-temurin-21 as build
-FROM eclipse-temurin-21-jammy as build
+FROM maven:3-eclipse-temurin-21 as build
+#FROM eclipse-temurin-21-jammy as build
 
 WORKDIR /app
 
