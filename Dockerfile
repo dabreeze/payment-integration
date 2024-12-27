@@ -12,8 +12,8 @@ COPY --from=builder extracted/snapshot-dependencies/ ./
 RUN true
 COPY --from=builder extracted/application/ ./
 
-ENTRYPOINT ["java", "org.springframework.boot.loader.jarLauncher"]
-#ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
+#ENTRYPOINT ["java", "org.springframework.boot.loader.jarLauncher"]
 
 #FROM ubuntu:latest AS build
 #RUN apt-get update
