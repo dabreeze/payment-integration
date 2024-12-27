@@ -1,8 +1,8 @@
-FROM eclipse-temurin:20-jre-alpine as builder
+FROM eclipse-temurin:21-jre-alpine as builder
 WORKDIR extracted
 ADD ./target/paystack_integration-0.0.1-SNAPSHOT.jar app.jar
 RUN java -Djarmode=layertools -jar app.jar extract
-FROM eclipse-temurin:20-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR application
 COPY --from=builder extracted/dependencies/ ./
 RUN true
