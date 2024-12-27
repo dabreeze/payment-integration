@@ -19,7 +19,7 @@ RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -Dskiptests
 
-FROM 21-alpine-jdk
+FROM eclipse-temurin:21.0.2_13-jdk
 
 WORKDIR /app
 COPY --from=build /app/target/paystack_integration-0.0.1-SNAPSHOT.jar .
