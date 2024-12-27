@@ -1,5 +1,5 @@
 # Stage 1: Builder (for building the project using Maven)
-FROM maven:3-eclipse-temurin-21 as builder
+FROM maven:3.8.6-openjdk-21-slim as builder
 
 WORKDIR /app
 
@@ -20,6 +20,9 @@ COPY --from=builder /app/target/paystack_integration-0.0.1-SNAPSHOT.jar app.jar
 
 # Extract layers using Spring Boot Layertools
 RUN java -Djarmode=layertools -jar app.jar extract
+
+# Debugging: List the extracted files to verify if they were extracted correctly
+RUN ls -alh /extracted
 
 # Stage 3: Final image (for running the application)
 FROM eclipse-temurin:21-jre-alpine
