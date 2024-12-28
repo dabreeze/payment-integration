@@ -26,19 +26,15 @@ public class PaymentController {
 
     @PostMapping("/create-plan")
     public ResponseEntity<CreatePlanResponse> createPlan(@Validated @RequestBody CreatePlanRequest createPlanRequest) throws Exception {
-        HttpHeaders httpheaders = new HttpHeaders();
         CreatePlanResponse response = paystackService.createPaystackPlan(createPlanRequest);
-        httpheaders.add("Access-Control-Allow-Origin", "*");
-        return response.isStatus() ? new ResponseEntity<>(response,httpheaders, HttpStatus.CREATED) : new ResponseEntity<>(response,httpheaders, HttpStatus.BAD_REQUEST
+        return response.isStatus() ? new ResponseEntity<>(response, HttpStatus.CREATED) : new ResponseEntity<>(response, HttpStatus.BAD_REQUEST
         );
     }
 
     @PostMapping("/receive-payment")
     public ResponseEntity<InitializePaymentResponse> receivePayment(@Validated @RequestBody InitializePaymentRequest initializePaymentRequest) throws Throwable {
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
         InitializePaymentResponse response = paystackService.initializePaystackPayment(initializePaymentRequest);
-        return response.isStatus() ? new ResponseEntity<>(response,httpheaders, HttpStatus.OK) : new ResponseEntity<>(response,httpheaders, HttpStatus.BAD_REQUEST);
+        return response.isStatus() ? new ResponseEntity<>(response, HttpStatus.OK) : new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/verify-payment/{reference}/{plan}/{id}")
@@ -46,77 +42,60 @@ public class PaymentController {
                                                                            @PathVariable(value = "plan") String plan,
                                                                            @PathVariable(value = "id") long id) throws Exception {
         PaymentVerificationResponse response = paystackService.paystackPaymentVerification(reference, plan, id);
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
-
-        return response.getData().getStatus().equals("success") ? new ResponseEntity<>(response,httpheaders, HttpStatus.OK) : new ResponseEntity<>(response, httpheaders,HttpStatus.BAD_REQUEST);
+        return response.getData().getStatus().equals("success") ? new ResponseEntity<>(response, HttpStatus.OK) : new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
     @PostMapping("/create-recipient")
     public ResponseEntity<?> createRecipient(@RequestBody CreateTransferReceipient createTransferReceipient) {
         HttpResponse<String> response = paystackService.createReceipient(createTransferReceipient);
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.OK) : new ResponseEntity<>(response.getBody(), httpheaders,HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), HttpStatus.OK) : new ResponseEntity<>(response.getBody(),HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/initialize-transfer")
     public ResponseEntity<String> initiateTransfer(SendPaymentRequest sendPaymentRequest) {
         HttpResponse<String> response = paystackService.initiateTransfer(sendPaymentRequest);
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.OK) :
-                new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), HttpStatus.OK) :
+                new ResponseEntity<>(response.getBody(), HttpStatus.BAD_REQUEST);
 
     }
 
     @PostMapping("/finalize-transfer")
     public ResponseEntity<?> finalizeTransfer(@RequestBody FinalizeTransactionRequest finalizeTransactionRequest) {
         HttpResponse<String> response = paystackService.finalizeTransaction(finalizeTransactionRequest);
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), httpheaders,HttpStatus.OK)
-                : new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),HttpStatus.OK)
+                : new ResponseEntity<>(response.getBody(), HttpStatus.BAD_REQUEST);
     }
 
 
     @GetMapping("/list-country")
     public ResponseEntity<String> listCountry() {
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
         HttpResponse<String> response = paystackService.getListOfCountries();
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.OK)
-                : new ResponseEntity<>(response.getBody(), httpheaders,HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), HttpStatus.OK)
+                : new ResponseEntity<>(response.getBody(),HttpStatus.BAD_REQUEST);
 
     }
 
     @GetMapping("/list-state/{country}")
     public ResponseEntity<String> listStates(@PathVariable(value = "country") String country) {
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
         HttpResponse<String> response = paystackService.getListOfStates(country);
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.OK)
-                : new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), HttpStatus.OK)
+                : new ResponseEntity<>(response.getBody(), HttpStatus.BAD_REQUEST);
 
     }
 
     @GetMapping("/list-banks")
     public ResponseEntity<String> listBanks() {
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
         HttpResponse<String> response = paystackService.getListOfBanks();
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), httpheaders,HttpStatus.OK)
-                : new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),HttpStatus.OK)
+                : new ResponseEntity<>(response.getBody(), HttpStatus.BAD_REQUEST);
 
     }
 
     @GetMapping("/account/{accountNumber}/{bankCode}")
     public ResponseEntity<String> validateBankAccount(@PathVariable(value = "accountNumber") String accountNumber,
                                                       @PathVariable(value = "bankCode") String bankCode) {
-        HttpHeaders httpheaders = new HttpHeaders();
-        httpheaders.add("Access-Control-Allow-Origin", "*");
         HttpResponse<String> response = paystackService.validateBankAccount(accountNumber, bankCode);
-        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(),httpheaders, HttpStatus.OK)
-                : new ResponseEntity<>(response.getBody(), httpheaders,HttpStatus.BAD_REQUEST);
+        return response.getStatus() == 200 ? new ResponseEntity<>(response.getBody(), HttpStatus.OK)
+                : new ResponseEntity<>(response.getBody(),HttpStatus.BAD_REQUEST);
 
     }
 
