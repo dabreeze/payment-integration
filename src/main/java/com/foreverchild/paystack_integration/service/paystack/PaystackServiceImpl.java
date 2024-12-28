@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -54,6 +55,8 @@ public class PaystackServiceImpl implements PaystackService {
     public InitializePaymentResponse initializePaystackPayment(InitializePaymentRequest initializePaymentRequest) {
         InitializePaymentResponse initializePaymentResponse = null;
         System.out.println("request to url" + ServiceConstants.PAYSTACK_RECEIVE_PAYMENT);
+        int amount = Integer.parseInt(initializePaymentRequest.getAmount())*100;
+        initializePaymentRequest.setAmount(String.valueOf(amount));
 
         Optional<Customer> customer = customerRepository.findById(initializePaymentRequest.getCustomerId());
         if (customer.isEmpty()) {
@@ -127,14 +130,8 @@ public class PaystackServiceImpl implements PaystackService {
     public HttpResponse<String> initiateTransfer(SendPaymentRequest sendPaymentRequest) {
         FinalizeTransactionResponse transferResponse = null;
 
-//        Request validator
-//        transfer creation
-//        approval check
-//        queue transfer
-//        awaiting processor
-
+        sendPaymentRequest.setAmount(sendPaymentRequest.getAmount().multiply(BigInteger.valueOf(100)));
         System.out.println("Sending request to url" + ServiceConstants.PAYSTACK_SEND_PAYMENT);
-        //        transferResponse = utils.jsonToObject(responseObj.getBody(), FinalizeTransactionResponse.class);
         return httpHelper.post(ServiceConstants.PAYSTACK_SEND_PAYMENT, sendPaymentRequest);
     }
 

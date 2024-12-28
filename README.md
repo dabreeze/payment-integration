@@ -8,7 +8,8 @@ this is a middle-ware service that accepts payment request and sends to paystack
  END POINTS================
 
 1. create payment plan for product
-2. initialize payment
+1. create a customer 
+2. initialize payment with the customer Id returned from above
 3. verify payment
 4. basic customer crud operations
 
