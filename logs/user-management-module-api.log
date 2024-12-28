@@ -540,3 +540,6 @@ Consider defining a bean of type 'org.springframework.http.HttpHeaders' in your 
 2024-12-28 12:15:25 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8085 (http) with context path '/'
 2024-12-28 12:15:25 INFO  c.f.p.PaystackIntegrationApplication - Started PaystackIntegrationApplication in 8.403 seconds (process running for 1281.418)
 2024-12-28 12:15:25 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-12-28 12:25:39 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-28 12:25:39 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-12-28 12:25:39 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
