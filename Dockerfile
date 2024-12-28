@@ -24,5 +24,5 @@ FROM eclipse-temurin:21.0.2_13-jdk
 WORKDIR /app
 COPY --from=build /app/target/paystack_integration-0.0.1-SNAPSHOT.jar .
 
-EXPOSE 8080
+EXPOSE 8085
 ENTRYPOINT ["java", "-jar", "/app/paystack_integration-0.0.1-SNAPSHOT.jar"]
