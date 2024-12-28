@@ -653,3 +653,58 @@ Consider defining a bean of type 'org.springframework.http.HttpHeaders' in your 
 2024-12-28 13:36:57 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-12-28 13:36:57 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2024-12-28 13:36:57 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-12-28 13:37:11 WARN  o.s.c.service.GenericResponseService - Json Processing Exception occurred: additionalProperties must be either a Boolean or a Schema instance
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1670] (through reference chain: io.swagger.v3.oas.models.responses.ApiResponses["400"]->io.swagger.v3.oas.models.responses.ApiResponse["content"]->io.swagger.v3.oas.models.media.Content["*/*"]->io.swagger.v3.oas.models.media.MediaType["schema"]->io.swagger.v3.oas.models.media.Schema["additionalProperties"])
+2024-12-28 13:37:11 WARN  o.s.c.service.GenericResponseService - Json Processing Exception occurred: additionalProperties must be either a Boolean or a Schema instance
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1670] (through reference chain: io.swagger.v3.oas.models.responses.ApiResponses["400"]->io.swagger.v3.oas.models.responses.ApiResponse["content"]->io.swagger.v3.oas.models.media.Content["*/*"]->io.swagger.v3.oas.models.media.MediaType["schema"]->io.swagger.v3.oas.models.media.Schema["additionalProperties"])
+2024-12-28 13:37:11 WARN  o.s.c.service.GenericResponseService - Json Processing Exception occurred: additionalProperties must be either a Boolean or a Schema instance
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1670] (through reference chain: io.swagger.v3.oas.models.responses.ApiResponses["400"]->io.swagger.v3.oas.models.responses.ApiResponse["content"]->io.swagger.v3.oas.models.media.Content["*/*"]->io.swagger.v3.oas.models.media.MediaType["schema"]->io.swagger.v3.oas.models.media.Schema["additionalProperties"])
+2024-12-28 13:37:12 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2110 ms
+2024-12-28 13:49:34 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 43 class path changes (0 additions, 42 deletions, 1 modification)
+2024-12-28 13:49:34 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-28 13:49:34 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-28 13:49:34 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-28 13:49:34 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-28 13:49:35 INFO  c.f.p.PaystackIntegrationApplication - Starting PaystackIntegrationApplication using Java 21.0.5 with PID 11588 (C:\Users\harri\OneDrive\Documents\personal-learning\Java\paystack-integration\target\classes started by harri in C:\Users\harri\OneDrive\Documents\personal-learning\Java\paystack-integration)
+2024-12-28 13:49:35 INFO  c.f.p.PaystackIntegrationApplication - The following 1 profile is active: "local"
+2024-12-28 13:49:36 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-28 13:49:36 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-12-28 13:49:36 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-28 13:49:36 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-28 13:49:36 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-28 13:49:36 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-28 13:49:37 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-28 13:49:37 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1742 ms
+2024-12-28 13:49:37 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-28 13:49:37 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-28 13:49:37 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-28 13:49:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-12-28 13:49:39 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-12-28 13:49:42 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-28 13:49:42 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-28 13:49:42 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-28 13:49:42 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-28 13:49:43 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-12-28 13:49:43 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-28 13:49:43 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-28 13:49:43 INFO  c.f.p.PaystackIntegrationApplication - Started PaystackIntegrationApplication in 8.051 seconds (process running for 796.538)
+2024-12-28 13:49:43 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-12-28 13:49:44 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 42 class path changes (42 additions, 0 deletions, 0 modifications)
+2024-12-28 13:49:44 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-28 13:49:44 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-28 13:49:44 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-12-28 13:49:45 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-12-28 13:49:45 INFO  c.f.p.PaystackIntegrationApplication - Starting PaystackIntegrationApplication using Java 21.0.5 with PID 11588 (C:\Users\harri\OneDrive\Documents\personal-learning\Java\paystack-integration\target\classes started by harri in C:\Users\harri\OneDrive\Documents\personal-learning\Java\paystack-integration)
+2024-12-28 13:49:45 INFO  c.f.p.PaystackIntegrationApplication - The following 1 profile is active: "local"
+2024-12-28 13:49:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-28 13:49:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 2 JPA repository interfaces.
+2024-12-28 13:49:47 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-28 13:49:47 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-28 13:49:47 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-28 13:49:47 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-28 13:49:47 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-28 13:49:47 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1606 ms
+2024-12-28 13:49:47 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-28 13:49:47 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-28 13:49:47 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-28 13:49:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
