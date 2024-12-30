@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
         servers = {
                 @Server(
                         description = "Local ENV",
-                        url = "http://localhost:8080"
+                        url = "https://payment-integration-1-m6j4.onrender.com"
                 )
 
         }
